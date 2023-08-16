@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="~{layout}">
+    <head>
+        <title th:text="#{customer.edit.headline}" />
+    </head>
+    <body>
+        <div layout:fragment="content">
+            <div class="d-flex flex-wrap mb-4">
+                <h1 th:text="#{customer.edit.headline}" class="flex-grow-1" />
+                <div>
+                    <a th:href="@{/customers}" th:text="#{customer.edit.back}" class="btn btn-secondary" />
+                </div>
+            </div>
+            <div th:replace="~{fragments/forms::globalErrors('customer')}" />
+            <form th:action="${T(io.ramsingh.assignment.util.WebUtils).getRequest().requestURI}" method="post">
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='firstName')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='lastName')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='street')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='address')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='city')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='state')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='email')}" />
+                <div th:replace="~{fragments/forms::inputRow(object='customer', field='phone')}" />
+                <input type="submit" th:value="#{customer.edit.headline}" class="btn btn-primary mt-4" />
+            </form>
+        </div>
+    </body>
+</html>
